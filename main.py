@@ -1,7 +1,5 @@
 import sys
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8') #to avoid an error we had with Greek letters
-import matplotlib.pyplot as plt
+sys.stdout.reconfigure(encoding='utf-8') #to avoid an error we had with Greek letters
 import torch
 import torch.nn.functional as F
 import requests
@@ -52,8 +50,8 @@ def build_dataset(words, block_size=3):
         w = w.replace(" ", "")
         context = [0] * block_size
         for idx, ch in enumerate(w):
-           " if ch == "ς" and idx < len(w) - 1:
-               " ch = "σ"  # Convert 'ς' to 'σ' except at the end
+            if ch == "ς" and idx < len(w) - 1:
+                ch = "σ"  # Convert 'ς' to 'σ' except at the end
             ix = stoi[ch]
             X.append(context)
             Y.append(ix)
