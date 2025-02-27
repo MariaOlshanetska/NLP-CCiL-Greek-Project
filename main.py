@@ -1,5 +1,6 @@
 import sys
-sys.stdout.reconfigure(encoding='utf-8') #to avoid an error we had with Greek letters
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8') #to avoid an error we had with Greek letters
 import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
