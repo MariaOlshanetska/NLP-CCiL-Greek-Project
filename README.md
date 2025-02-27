@@ -10,7 +10,7 @@
 ## 🛠️ Installation
 Clone the repository and install dependencies:
 ```sh
-git clone https://github.com/MariaOlshanetska/NLP-CCiL-Greek-Project
+git clone https://github.com/MariaOlshanetska/NLP-CCiL-Greek-names-generator
 cd NLP-CCiL-Greek-Project
 pip install -r requirements.txt
 
