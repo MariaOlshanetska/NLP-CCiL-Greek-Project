@@ -10,6 +10,6 @@ This project trains a character-level language model to generate Greek names. It
 ## Installation
 Clone the repo and install dependencies:
 ```sh
-git clone https://github.com/YOUR_USERNAME/greek-name-generator.git
+git clone [https://github.com/YOUR_USERNAME/greek-name-generator.git](https://github.com/MariaOlshanetska/NLP-CCiL-Greek-Project)
 cd greek-name-generator
 pip install -r requirements.txt
