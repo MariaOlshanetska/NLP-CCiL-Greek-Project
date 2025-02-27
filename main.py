@@ -11,7 +11,7 @@ import random
 # ---------------------- DOWNLOAD & LOAD DATA ----------------------
 
 def download_data(url, filename="names_greek.txt"):
-    """Downloads a text file from a given URL if not already present."""
+    """Downloads a text file from a given URL."""
     response = requests.get(url)
     if response.status_code == 200:
         with open(filename, "wb") as file:
@@ -52,8 +52,8 @@ def build_dataset(words, block_size=3):
         w = w.replace(" ", "")
         context = [0] * block_size
         for idx, ch in enumerate(w):
-            if ch == "ς" and idx < len(w) - 1:
-                ch = "σ"  # Convert 'ς' to 'σ' except at the end
+           " if ch == "ς" and idx < len(w) - 1:
+               " ch = "σ"  # Convert 'ς' to 'σ' except at the end
             ix = stoi[ch]
             X.append(context)
             Y.append(ix)
@@ -124,20 +124,6 @@ def evaluate(X, Y, parameters):
     logits = h @ W2 + b2
     return F.cross_entropy(logits, Y).item()
 
-# ---------------------- VISUALIZATION FUNCTION ----------------------
-
-def plot_embedding(C, itos):
-    """Visualizes character embeddings in 2D space."""
-    plt.figure(figsize=(8, 8))
-    plt.scatter(C[:, 0].detach(), C[:, 1].detach(), s=200)
-    
-    for i in range(C.shape[0]):
-        char = itos[i] if i in itos else "."
-        plt.text(C[i, 0].item(), C[i, 1].item(), char, ha="center", va="center", color="white")
-    
-    plt.grid(True)
-    plt.show()
-
 # ---------------------- NAME GENERATION ----------------------
 
 def generate_names(parameters, itos, block_size=3):
@@ -190,8 +176,6 @@ if __name__ == "__main__":
     print("Validation Loss:", evaluate(Xdev, Ydev, parameters))
     print("Test Loss:", evaluate(Xte, Yte, parameters))
 
-    # Plot Embeddings
-    plot_embedding(parameters[0], itos)
 
     # Generate Names
     generate_names(parameters, itos)
