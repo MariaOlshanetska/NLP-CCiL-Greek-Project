@@ -2,9 +2,6 @@
 
 🚀 A simple character-level language model to generate Greek names using PyTorch.
 
-![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)  
-[📖 Project Documentation](https://github.com/MariaOlshanetska/NLP-CCiL-Greek-Project/tree/main/docs)
-
 ## 📌 Features
 - ✅ Preprocesses Greek names, normalizing diacritics
 - ✅ Implements a neural network in PyTorch
