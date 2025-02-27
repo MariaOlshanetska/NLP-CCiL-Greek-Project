@@ -2,8 +2,6 @@
 
 🚀 A simple character-level language model to generate Greek names using PyTorch.
 
-![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)  
-
 ## 📌 Features
 - ✅ Preprocesses Greek names, normalizing diacritics
 - ✅ Implements a neural network in PyTorch
