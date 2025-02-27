@@ -1,3 +1,5 @@
+import sys
+sys.stdout.reconfigure(encoding='utf-8') #to avoid an error we had with Greek letters
 import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
@@ -55,7 +57,11 @@ def build_dataset(words, block_size=3):
             X.append(context)
             Y.append(ix)
             context = context[1:] + [ix]  # Shift context
+        # Append termination example: signal end of the name.
+        X.append(context)
+        Y.append(0)
     return torch.tensor(X), torch.tensor(Y)
+
 
 # ---------------------- INITIALIZE TRAINING PARAMETERS ----------------------
 
@@ -133,11 +139,12 @@ def plot_embedding(C, itos):
 
 # ---------------------- NAME GENERATION ----------------------
 
-def generate_names(parameters, itos, num_names=20, block_size=3):
-    """Generates new names using the trained model."""
+def generate_names(parameters, itos, block_size=3):
     C, W1, b1, W2, b2 = parameters
     g = torch.Generator().manual_seed(2147483647 + 10)
-
+    
+    num_names = int(input("Enter the number of names to generate: "))
+    
     for _ in range(num_names):
         out = []
         context = [0] * block_size  # Start with empty context
